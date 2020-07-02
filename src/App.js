@@ -4,21 +4,22 @@ import ResultComponent from './components/ResultComponent';
 import KeyPadComponent from "./components/KeyPadComponent";
 
 class App extends Component {
-    constructor(){
-        super();
+  constructor(){
+      super();
 
-        this.state = {
-            result: ""
-        }
-    }
+      this.state = {
+          result: ""
+      }
+  }
+    
 
-    calculate = () => {
+  calculate = () => {
       try {
           this.setState({
               // eslint-disable-next-line
               result: (eval(this.state.result) || "" ) + ""
           })
-        } catch (e) {
+      } catch (e) {
           this.setState({
               result: "error"
           })
@@ -26,29 +27,29 @@ class App extends Component {
       }
   };
 
-  reset = () => {
-    this.setState({
-        result: ""
-    })
-};
+    reset = () => {
+        this.setState({
+            result: ""
+        })
+    };
 
-backspace = () => {
-  this.setState({
-      result: this.state.result.slice(0, -1)
-  })
-};
+    backspace = () => {
+        this.setState({
+            result: this.state.result.slice(0, -1)
+        })
+    };
 
     render() {
-        return (
-            <div>
-                <div className="calculator-body">
-                    <h1>Simple Calculator</h1>
-                    <ResultComponent result={this.state.result}/>
-                    <KeyPadComponent onClick={this.onClick}/>
-                </div>
+      return (
+        <div>
+            <div className="calculator-body">
+                <h1>Simple Calculator</h1>
+                <ResultComponent result={this.state.result}/>
+                <KeyPadComponent onClick={this.onClick}/>
             </div>
-        );
-    }
+        </div>
+      );
+  }
 }
 
 export default App;
