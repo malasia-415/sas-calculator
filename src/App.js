@@ -1,6 +1,7 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import ResultComponent from './components/ResultComponent';
+import KeyPadComponent from "./components/KeyPadComponent";
 
 class App extends Component {
   constructor(){
