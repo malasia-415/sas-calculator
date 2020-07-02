@@ -26,6 +26,12 @@ class App extends Component {
       }
   };
 
+  reset = () => {
+    this.setState({
+        result: ""
+    })
+};
+
     render() {
         return (
             <div>
