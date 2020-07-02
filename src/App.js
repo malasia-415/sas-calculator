@@ -30,9 +30,7 @@ class App extends Component {
       })
   }
 };
-
     
-
   calculate = () => {
       try {
           this.setState({
