@@ -4,46 +4,57 @@ import ResultComponent from './components/ResultComponent';
 import KeyPadComponent from "./components/KeyPadComponent";
 
 class App extends Component {
-  constructor(){
-      super();
+    constructor(){
+        super();
 
-      this.state = {
-          result: ""
-      }
-  }
-  onClick = button => {
-
-    if(button === "="){
-        this.calculate()
+        this.state = {
+            result: ""
+        }
     }
 
-    else if(button === "C"){
-        this.reset()
-    }
-    else if(button === "CE"){
-        this.backspace()
-    }
+    onClick = button => {
 
-    else {
-      this.setState({
-          result: this.state.result + button
-      })
-  }
-};
-    
-  calculate = () => {
-      try {
-          this.setState({
-              // eslint-disable-next-line
-              result: (eval(this.state.result) || "" ) + ""
-          })
-      } catch (e) {
-          this.setState({
-              result: "error"
-          })
+        if(button === "="){
+            this.calculate()
+        }
 
-      }
-  };
+        else if(button === "C"){
+            this.reset()
+        }
+        else if(button === "CE"){
+            this.backspace()
+        }
+
+        else {
+            this.setState({
+                result: this.state.result + button
+            })
+        }
+    };
+
+
+    calculate = () => {
+        var checkResult = ''
+        if(this.state.result.includes('--')){
+            checkResult = this.state.result.replace('--','+')
+        }
+
+        else {
+            checkResult = this.state.result
+        }
+
+        try {
+            this.setState({
+                // eslint-disable-next-line
+                result: (eval(checkResult) || "" ) + ""
+            })
+        } catch (e) {
+            this.setState({
+                result: "error"
+            })
+
+        }
+    };
 
     reset = () => {
         this.setState({
@@ -58,16 +69,16 @@ class App extends Component {
     };
 
     render() {
-      return (
-        <div>
-            <div className="calculator-body">
-                <h1>Simple Calculator</h1>
-                <ResultComponent result={this.state.result}/>
-                <KeyPadComponent onClick={this.onClick}/>
+        return (
+            <div>
+                <div className="calculator-body">
+                    <h1>Simple Calculator</h1>
+                    <ResultComponent result={this.state.result}/>
+                    <KeyPadComponent onClick={this.onClick}/>
+                </div>
             </div>
-        </div>
-      );
-  }
+        );
+    }
 }
 
 export default App;
