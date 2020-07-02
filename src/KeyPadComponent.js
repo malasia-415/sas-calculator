@@ -25,5 +25,12 @@ class KeyPadComponent extends Component {
                 <button name="9" onClick={e => this.props.onClick(e.target.name)}>9</button>
                 <button name="*" onClick={e => this.props.onClick(e.target.name)}>x</button><br/>
 
-                
+                <button name="." onClick={e => this.props.onClick(e.target.name)}>.</button>
+                <button name="0" onClick={e => this.props.onClick(e.target.name)}>0</button>
+                <button name="=" onClick={e => this.props.onClick(e.target.name)}>=</button>
+                <button name="/" onClick={e => this.props.onClick(e.target.name)}>÷</button><br/>
+            </div>
+        );
+    }
+}
 
